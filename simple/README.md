@@ -41,6 +41,10 @@ Session 1 (Host):
 ```bash
 # Find IP of instance:
 multipass info consul-dev
+# Make note of IPv4 address
+
+# Open web browser on host to:
+#  http://<IPADDR>:8500/
 
 # set consul http address for CLI
 export CONSUL_HTTP_ADDR=<IPADDR>:8500

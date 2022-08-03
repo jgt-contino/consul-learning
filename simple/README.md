@@ -39,15 +39,22 @@ consul agent -dev -client 0.0.0.0
 Session 1 (Host):
 
 ```bash
-# Install consul (Mac):
-brew install consul
-
 # Find IP of instance:
 multipass info consul-dev
 
 # set consul http address for CLI
 export CONSUL_HTTP_ADDR=<IPADDR>:8500
 
-# Access consul
+# Get consul info
+consul info
+
+# List "members" of consul cluster
 consul members
+```
+
+### Register a Service
+
+```bash
+# register a "service"
+consul services register -name web
 ```

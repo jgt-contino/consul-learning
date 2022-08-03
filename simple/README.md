@@ -1,0 +1,53 @@
+# Simple (Dev-mode) Consul Examples
+
+## Simple Example
+
+### Notes
+
+Requirements:
+
+* Consul installed on host for CLI access
+* Multipass installed for running VMs
+
+Easiest with multiple sessions.
+
+### Create Consul Instance
+
+Session 1 (Host):
+
+```bash
+# Create consul-dev instance
+multipass launch --name consul-dev --cloud-init https://raw.githubusercontent.com/jgt-contino/consul-learning/main/simple/consul.yaml jammy
+```
+
+### Run Consul on Instance
+
+Session 2 (Server):
+
+```bash
+# Login to consul-dev instance
+multipass shell consul-dev
+
+# Start Consul in Dev mode, listen on all IPs:
+consul agent -dev -client 0.0.0.0
+
+# Once consul is running - no additional commands will be given here - instead, this is for monitoring consul server messages
+```
+
+### Connect Local Consul client to Consul instance
+
+Session 1 (Host):
+
+```bash
+# Install consul (Mac):
+brew install consul
+
+# Find IP of instance:
+multipass info consul-dev
+
+# set consul http address for CLI
+export CONSUL_HTTP_ADDR=<IPADDR>:8500
+
+# Access consul
+consul members
+```

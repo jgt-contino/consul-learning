@@ -1,0 +1,28 @@
+#cloud-config
+
+write_files:
+ - path: /etc/resolv.conf.custom
+   content: |
+    search service.consul
+    nameserver 127.0.0.1
+    nameserver 8.8.8.8
+    nameserver 8.8.4.4
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - git
+  - wget
+  - nano
+
+runcmd:
+  - wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  - echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+  - apt update
+  - apt install -y consul
+  - systemctl disable systemd-resolved
+  - systemctl stop systemd-resolved
+  - rm /etc/resolv.conf
+  - cp /etc/resolv.conf.custom /etc/resolv.conf
+

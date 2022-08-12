@@ -57,4 +57,5 @@ multipass purge
 
 ## Examples
 
-* [Simple Examples](simple/README.md)
+* [Simple Example](examples/01-simple/README.md) - just get Consul up and running
+* [DNS Example](examples/02-dns/README.md) - Use standard DNS to resolve service names

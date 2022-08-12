@@ -17,7 +17,7 @@ Session 1 (Host):
 
 ```bash
 # Create consul-dev instance
-multipass launch --name consul-dev --cloud-init https://raw.githubusercontent.com/jgt-contino/consul-learning/main/simple/consul.yaml jammy
+multipass launch --name consul-dev --cloud-init https://raw.githubusercontent.com/jgt-contino/consul-learning/main/setup/multipass/consul-simple.yaml jammy
 ```
 
 ### Run Consul on Instance
@@ -28,8 +28,8 @@ Session 2 (Server):
 # Login to consul-dev instance
 multipass shell consul-dev
 
-# Start Consul in Dev mode, listen on all IPs (must run as root for DNS):
-sudo consul agent -dev -client 0.0.0.0 -dns-port 53
+# Start Consul in Dev mode, listen on all IPs:
+consul agent -dev -client 0.0.0.0
 
 # Once consul is running - no additional commands will be given here - instead, this is for monitoring consul server messages
 ```

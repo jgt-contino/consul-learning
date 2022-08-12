@@ -66,6 +66,8 @@ consul members
 consul services register -name web -address "192.168.64.10" -port 80
 
 consul services register -name database -address "192.168.64.12" -port 3600
+
+consul catalog services
 ```
 
 ### Query DNS for Services

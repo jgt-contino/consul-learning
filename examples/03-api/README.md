@@ -1,5 +1,7 @@
 # API Consul Examples
 
+Build upon the DNS Example, but use the Consul API to query instead of DNS.
+
 ## API Example
 
 ### Notes

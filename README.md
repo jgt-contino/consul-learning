@@ -59,3 +59,4 @@ multipass purge
 
 * [Simple Example](examples/01-simple/README.md) - just get Consul up and running
 * [DNS Example](examples/02-dns/README.md) - Use standard DNS to resolve service names
+* [API Example](examples/03-api/README.md) - Build on previous example to query using the Consul API

@@ -26,7 +26,7 @@ Session 2 (Server):
 
 ```bash
 # Login to consul-dev instance
-multipass shell consul-dns
+multipass shell consul-dev
 
 # Start Consul in Dev mode, listen on all IPs (must run as root for DNS):
 sudo consul agent -dev -client 0.0.0.0 -dns-port 53
@@ -40,7 +40,7 @@ Session 1 (Host):
 
 ```bash
 # Find IP of instance:
-multipass info consul-dns
+multipass info consul-dev
 # or can use multipass list
 # Make note of IPv4 address
 

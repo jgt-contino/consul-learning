@@ -1,6 +1,6 @@
-# Simple (Dev-mode) Consul Examples
+# DNS Consul Examples
 
-## Simple Example
+## DNS Example
 
 ### Notes
 
@@ -48,7 +48,9 @@ multipass info consul-dns
 #  http://<IPADDR>:8500/
 
 # set consul http address for CLI
-export CONSUL_HTTP_ADDR=<IPADDR>:8500
+
+export CONSUL_IP=<IPADDR>
+export CONSUL_HTTP_ADDR=${CONSUL_IP}:8500
 
 # Get consul info
 consul info
@@ -57,9 +59,24 @@ consul info
 consul members
 ```
 
-### Register a Service
+### Register Services
 
 ```bash
-# register a "service"
-consul services register -name web
+# register services
+consul services register -name web -address "192.168.64.10" -port 80
+
+consul services register -name database -address "192.168.64.12" -port 3600
+```
+
+### Query DNS for Services
+
+```bash
+# double check IP env is set
+cat $CONSUL_IP
+
+# query for web address
+dig @$CONSUL_IP web.service.consul
+
+# query for database, with port
+dig @$CONSUL_IP database.service.consul -t SRV
 ```

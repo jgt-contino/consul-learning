@@ -61,4 +61,14 @@ consul members
 ```bash
 # register a "service"
 consul services register -name web
+
+# list all services
+consul catalog services
+
+# review on web app
+
+# unregister
+consul services deregister -id web
+
+# note - by default id will assume name
 ```
